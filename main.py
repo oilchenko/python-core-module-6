@@ -114,11 +114,18 @@ def main(folder: Path):
 
     parser.parser_info()
 
-if __name__ == '__main__':
-    if sys.argv[1]:
-        folder_for_scan = Path(sys.argv[1])
-        print(f'main.py: Start in folder {folder_for_scan.resolve()}')
+def path_function():
+    try:
+        folder = sys.argv[1]
+    except IndexError:
+        print('Enter valid path to the folder as an argument')
+    else:
+        folder_for_scan = Path(folder)
+        print(f'Start in folder {folder_for_scan.resolve()}')
         main(folder_for_scan.resolve())
+
+if __name__ == '__main__':
+    path_function()
 
 
 # TODO: запускаємо:  python3 main.py "назва_папки_для_сортування"
